@@ -90,9 +90,16 @@ function handleCreateAndSavePerson(err, doc) {
 // });
 
 var createAndSavePerson = function(done) {
-  
-  done(null /*, data*/);
-
+  const person = new Person({
+    name: 'richard borges',
+    age: 28,
+    favoriteFoods: ['chiken', 'fries', 'barbecue']
+  });
+  person.save(
+    (err, data) => err 
+      ? done(err) 
+      : done(null, data)
+  );
 };
 
 /** 4) Create many People with `Model.create()` */
