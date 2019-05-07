@@ -271,11 +271,13 @@ var findAndUpdate = function(personName, done) {
 // `findByIdAndRemove()` or `findOneAndRemove()`. They are similar to the
 // previous update methods. They pass the removed document to the cb.
 // As usual, use the function argument `personId` as search key.
-
 var removeById = function(personId, done) {
-  
-  done(null/*, data*/);
-    
+  Person.findByIdAndRemove(
+    personId,
+    (err, data) => err
+      ? done(err) 
+      : done(null, data)
+  );
 };
 
 /** 11) Delete many People */
